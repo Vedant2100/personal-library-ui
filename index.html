@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101826" />
+    <title>Personal Library</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101826'/%3E%3Cpath d='M17 19h30v26H17z' fill='none' stroke='%238ee6c1' stroke-width='5'/%3E%3Cpath d='M24 13v12m16-12v12' stroke='%23f6c453' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css?v=20260927-11" />
+  </head>
+  <body>
+    <div class="shell">
+      <section class="controls" aria-label="Library controls">
+        <div class="mode-tabs" role="tablist" aria-label="Modes">
+          <button class="mode active" data-mode="map" role="tab">Area map</button>
+          <button class="mode" data-mode="today" role="tab">Today</button>
+          <button class="map-scope-nav active" data-map-group="Agentic AI" role="tab">Agentic AI</button>
+          <button class="map-scope-nav" data-map-group="Other" role="tab">Other</button>
+        </div>
+        <div class="actions">
+          <label class="search-wrap">
+            <span class="sr-only">Search Personal library</span>
+            <input id="search" type="search" placeholder="Search titles, folders, URLs…" autocomplete="off" aria-controls="search-suggestions" aria-autocomplete="list" />
+            <span id="search-suggestions" class="search-suggestions" role="listbox" hidden></span>
+          </label>
+          <button id="refresh-today" class="button" hidden>Refresh Today</button>
+          <button id="sync-tasks" class="button">Bring back from Tasks</button>
+        </div>
+      </section>
+
+      <main id="library-main">
+        <section class="map-overview" id="map-overview" aria-label="Agentic AI map"></section>
+        <section class="tree" id="tree" aria-live="polite"></section>
+      </main>
+    </div>
+    <dialog id="github-auth-dialog" class="github-auth-dialog">
+      <form method="dialog">
+        <div class="github-auth-heading"><strong>Connect GitHub to archive</strong><button class="dialog-close" value="cancel" aria-label="Close">×</button></div>
+        <p>Paste the fine-grained token you created for <code>Vedant2100/personal-library</code>.</p>
+        <label>GitHub token <input id="github-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" /></label>
+        <small>Required permission: Contents — Read and write. It stays only in this browser session.</small>
+        <div class="github-auth-actions"><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noreferrer" class="button">Create token</a><button class="button" value="cancel">Cancel</button><button type="button" id="github-token-submit" class="button button-primary">Connect &amp; archive</button></div>
+      </form>
+    </dialog>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="google-tasks.js?v=20260927"></script>
+    <script src="app.js?v=20260927-19"></script>
+  </body>
+</html>
